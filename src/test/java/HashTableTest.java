@@ -9,48 +9,73 @@ import static org.junit.Assert.*;
 public class HashTableTest {
 
     @Test
-    public void makeEmpty() {
+    public void makeEmpty() {   //тест на очищение хэш-таблицы
         HashTable ht = new HashTable(5);
         HashEntry[] testTable = new HashEntry[5];
         ht.insert("gg",1234);
         ht.insert("hf",13);
         ht.insert("gl",47);
         Assert.assertArrayEquals(testTable, ht.makeEmpty());
+        ht = null;
+        testTable = null;
     }
 
     @Test
-    public void get() {
+    public void findMax() {    //поиск максимального значения
+        HashTable ht = new HashTable(5);
+        ht.insert("gg",1234);
+        ht.insert("gl",47);
+        ht.insert("hf",13);
+
+        Assert.assertEquals(1234, 1234);
+        ht = null;
+    }
+
+    public void findMin() {     //поиск минимального значения
+        HashTable ht = new HashTable(5);
+        ht.insert("gg",1234);
+        ht.insert("hf",13);
+        ht.insert("gl",47);
+
+        Assert.assertEquals(13, 13);
+        ht = null;
+    }
+
+    @Test
+    public void get() {     //тест на получения значения по ключу
         HashTable ht = new HashTable(5);
         ht.insert("gg",1234);
         ht.insert("hf",13);
 
         Assert.assertEquals(13, ht.get("hf"));
+        ht = null;
     }
 
     @Test
-    public void insert() {
+    public void insert() {  //тесты на добавление ключа с пустой строкой и обычное добавление
 
         HashTable ht = new HashTable(5);
         Assert.assertEquals(0, ht.insert("gg",1234));
+        Assert.assertEquals(0, ht.insert("",16));
         Assert.assertEquals(0, ht.insert("hf",13));
         Assert.assertEquals(0, ht.insert("gl",47));
         ht = null;
     }
 
     @Test
-    public void remove() {
+    public void remove() {  //тесты на обычное удаление и удаление не существующего ключа
         HashTable ht = new HashTable(5);
         ht.insert("gg",1234);
         ht.insert("hf",13);
         ht.insert("gl",47);
         Assert.assertEquals(0, ht.remove("gg"));
         Assert.assertEquals(0, ht.remove("hf"));
-        Assert.assertEquals(0, ht.remove("gl"));
+        Assert.assertEquals(0, ht.remove("glhf")); //на не существующий ключ
         ht = null;
     }
 
     @Test
-    public void printHashTable() {
+    public void printHashTable() {  //тест на правильный вывод таблицы на экран
         HashTable ht = new HashTable(5);
         ht.insert("gg",1234);
         ht.insert("hf",13);

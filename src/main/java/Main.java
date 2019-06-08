@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.math.*;
 
-/* Class LinkedHashEntry */
+
 class HashEntry
 {
     String key;
     int value;
 
-    /* Constructor */
+
     HashEntry(String key, int value)
     {
         this.key = key;
@@ -19,7 +19,7 @@ class HashEntry
     }
 }
 
-/* Class HashTable */
+
 class HashTable
 {
     private int TABLE_SIZE;
@@ -27,7 +27,7 @@ class HashTable
     private HashEntry[] table;
     private int primeSize;
 
-    /* Constructor */
+
     public HashTable(int ts)
     {
         size = 0;
@@ -49,10 +49,10 @@ class HashTable
             if (fact == 0)
                 return i;
         }
-        /* Return a prime number */
+
         return 3;
     }
-    /* Function to get number of key-value pairs */
+
 
     public HashEntry[] makeEmpty()
     {
@@ -64,7 +64,7 @@ class HashTable
         return testTable;
     }
 
-    /* Function to get value of a key */
+
     public int get(String key)
     {
         int hash1 = myhash1( key );
@@ -77,7 +77,7 @@ class HashTable
         }
         return table[hash1].value;
     }
-    /* Function to insert a key value pair */
+
     public int insert(String key, int value)
     {
         if (size == TABLE_SIZE)
@@ -96,7 +96,7 @@ class HashTable
         size++;
         return 0;
     }
-    /* Function to remove a key */
+
     public int remove(String key)
     {
         int hash1 = myhash1( key );
@@ -110,7 +110,6 @@ class HashTable
         size--;
         return 0;
     }
-    /* Function myhash which gives a hash value for a given string */
     private int myhash1(String x )
     {
         int hashVal = x.hashCode( );
@@ -119,7 +118,7 @@ class HashTable
             hashVal += TABLE_SIZE;
         return hashVal;
     }
-    /* Function myhash function for double hashing */
+
     private int myhash2(String x )
     {
         int hashVal = x.hashCode( );
@@ -151,12 +150,12 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         System.out.println("Hash Table Test\n\n");
         System.out.println("Enter size");
-        /* Make object of HashTable */
+
 
         HashTable ht = new HashTable(scan.nextInt() );
 
         char ch;
-        /*  Perform HashTable operations  */
+
         do
         {
             System.out.println("\nHash Table Operations\n");
@@ -188,7 +187,7 @@ public class Main {
                     System.out.println("Wrong Entry \n ");
                     break;
             }
-            /* Display hash table */
+
             ht.printHashTable();
 
             System.out.println("\nDo you want to continue (Type y or n) \n");
