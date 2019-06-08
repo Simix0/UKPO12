@@ -53,6 +53,12 @@ class HashTable
     }
     /* Function to get number of key-value pairs */
 
+    public void makeEmpty()
+    {
+        size = 0;
+        for (int i = 0; i < TABLE_SIZE; i++)
+            table[i] = null;
+    }
 
     /* Function to get value of a key */
     public int get(String key)
@@ -68,12 +74,12 @@ class HashTable
         return table[hash1].value;
     }
     /* Function to insert a key value pair */
-    public void insert(String key, int value)
+    public int insert(String key, int value)
     {
         if (size == TABLE_SIZE)
         {
             System.out.println("Table full");
-            return;
+            return 1;
         }
         int hash1 = myhash1( key );
         int hash2 = myhash2( key );
@@ -84,6 +90,7 @@ class HashTable
         }
         table[hash1] = new HashEntry(key, value);
         size++;
+        return 0;
     }
     /* Function to remove a key */
     public void remove(String key)
@@ -146,7 +153,7 @@ public class Main {
             System.out.println("1. insert ");
             System.out.println("2. remove");
             System.out.println("3. get");
-
+            System.out.println("4. clear");
 
             int choice = scan.nextInt();
             switch (choice)
@@ -163,7 +170,10 @@ public class Main {
                     System.out.println("Enter key");
                     System.out.println("Value = "+ ht.get( scan.next() ));
                     break;
-
+                case 4 :
+                    ht.makeEmpty();
+                    System.out.println("Hash Table Cleared\n");
+                    break;
                 default :
                     System.out.println("Wrong Entry \n ");
                     break;
