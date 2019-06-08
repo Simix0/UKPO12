@@ -1,6 +1,7 @@
 
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.math.*;
 
@@ -53,11 +54,14 @@ class HashTable
     }
     /* Function to get number of key-value pairs */
 
-    public void makeEmpty()
+    public HashEntry[] makeEmpty()
     {
         size = 0;
+        HashEntry[] testTable;
         for (int i = 0; i < TABLE_SIZE; i++)
             table[i] = null;
+        testTable = table;
+        return testTable;
     }
 
     /* Function to get value of a key */
@@ -93,7 +97,7 @@ class HashTable
         return 0;
     }
     /* Function to remove a key */
-    public void remove(String key)
+    public int remove(String key)
     {
         int hash1 = myhash1( key );
         int hash2 = myhash2( key );
@@ -104,6 +108,7 @@ class HashTable
         }
         table[hash1] = null;
         size--;
+        return 0;
     }
     /* Function myhash which gives a hash value for a given string */
     private int myhash1(String x )
@@ -124,12 +129,17 @@ class HashTable
         return primeSize - hashVal % primeSize;
     }
     /* Function to print hash table */
-    public void printHashTable()
+    public ArrayList<String> printHashTable()
     {
+        ArrayList<String> hashC = new ArrayList<String>();
         System.out.println("\nHash Table");
         for (int i = 0; i < TABLE_SIZE; i++)
             if (table[i] != null)
-                System.out.println(table[i].key +" "+table[i].value);
+            {
+                System.out.println(table[i].key + " " + table[i].value);
+                hashC.add(table[i].key + " " + table[i].value);
+            }
+        return hashC;
     }
 }
 
