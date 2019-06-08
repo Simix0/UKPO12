@@ -30,7 +30,7 @@ public class HashTableTest {
         Assert.assertEquals(1234, 1234);
         ht = null;
     }
-
+    @Test
     public void findMin() {     //поиск минимального значения
         HashTable ht = new HashTable(5);
         ht.insert("gg",1234);

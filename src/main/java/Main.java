@@ -1,5 +1,3 @@
-
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,7 +8,6 @@ class HashEntry
 {
     String key;
     int value;
-
 
     HashEntry(String key, int value)
     {
@@ -27,7 +24,6 @@ class HashTable
     private HashEntry[] table;
     private int primeSize;
 
-
     public HashTable(int ts)
     {
         size = 0;
@@ -37,7 +33,7 @@ class HashTable
             table[i] = null;
         primeSize = getPrime();
     }
-    /* Function to get prime number less than table size for myhash2 function */
+    // Функция для получения числа меньше размера таблицы для функции myhash2
     public int getPrime()
     {
         for (int i = TABLE_SIZE - 1; i >= 1; i--)
@@ -53,7 +49,6 @@ class HashTable
         return 3;
     }
 
-
     public HashEntry[] makeEmpty()
     {
         size = 0;
@@ -63,7 +58,6 @@ class HashTable
         testTable = table;
         return testTable;
     }
-
 
     public int get(String key)
     {
@@ -110,6 +104,7 @@ class HashTable
         size--;
         return 0;
     }
+
     private int myhash1(String x )
     {
         int hashVal = x.hashCode( );
@@ -127,7 +122,7 @@ class HashTable
             hashVal += TABLE_SIZE;
         return primeSize - hashVal % primeSize;
     }
-    /* Function to print hash table */
+
     public ArrayList<String> printHashTable()
     {
         ArrayList<String> hashC = new ArrayList<String>();
@@ -150,7 +145,6 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         System.out.println("Hash Table Test\n\n");
         System.out.println("Enter size");
-
 
         HashTable ht = new HashTable(scan.nextInt() );
 
