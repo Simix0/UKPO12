@@ -15,8 +15,7 @@ public class HashTableTest {
         ht.insert("gg",1234);
         ht.insert("hf",13);
         ht.insert("gl",47);
-        //Assert.assertEquals(testTable, ht.makeEmpty());
-        Assert.assertNull(ht.makeEmpty());
+        Assert.assertArrayEquals(testTable, ht.makeEmpty());
     }
 
     @Test
@@ -57,9 +56,11 @@ public class HashTableTest {
         ht.insert("hf",13);
         ht.insert("gl",47);
         ArrayList<String> hC = new ArrayList<String>();
+        //Т.к. это хэш-таблица, то в данном случае порядок элементов при выводе
+        //на экран будет такой
+        hC.add("gl 47");
         hC.add("gg 1234");
         hC.add("hf 13");
-        hC.add("gl 47");
         Assert.assertEquals(hC, ht.printHashTable());
         ht = null;
         hC = null;
