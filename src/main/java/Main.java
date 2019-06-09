@@ -74,6 +74,8 @@ class HashTable
 
     public int insert(String key, int value)
     {
+        if (key == null)
+            return 1;
         if (size == TABLE_SIZE)
         {
             System.out.println("Table full");
@@ -125,6 +127,7 @@ class HashTable
 
     public ArrayList<String> printHashTable()
     {
+        boolean b = false;
         ArrayList<String> hashC = new ArrayList<String>();
         System.out.println("\nHash Table");
         for (int i = 0; i < TABLE_SIZE; i++)
@@ -132,6 +135,13 @@ class HashTable
             {
                 System.out.println(table[i].key + " " + table[i].value);
                 hashC.add(table[i].key + " " + table[i].value);
+                b = true;
+            }
+        if(!b)
+            {
+                System.out.println("HashTable is empty");
+                hashC.add("HashTable is empty");
+                return hashC;
             }
         return hashC;
     }
